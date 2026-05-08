@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: backend
+
+  datasource:
+    url: jdbc:postgresql://ep-spring-band-aqjp94bs-pooler.c-8.us-east-1.aws.neon.tech/neond?sslmode=require&channelBinding=require
+    username: neondb_owner
+    password: npg_bF4okpPUge1j
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
