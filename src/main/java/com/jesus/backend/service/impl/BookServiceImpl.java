@@ -91,13 +91,13 @@ public class BookServiceImpl implements BookService {
         }
 
         // Actualizamos las propiedades del libro
-        if (dto.isbn() != null) bookToUpdate.setIsbn(dto.isbn());
-        if (dto.title() != null) bookToUpdate.setTitle(dto.title());
         if (dto.genre() != null) bookToUpdate.setGenre(dto.genre());
-        if (dto.author() != null) bookToUpdate.setAuthor(dto.author());
-        if (dto.synopsis() != null) bookToUpdate.setSynopsis(dto.synopsis());
-        if (dto.editorial() != null) bookToUpdate.setEditorial(dto.editorial());
+        if (dto.isbn() != null) bookToUpdate.setIsbn(bookMapper.trim(dto.isbn()));
+        if (dto.title() != null) bookToUpdate.setTitle(bookMapper.trim(dto.title()));
+        if (dto.author() != null) bookToUpdate.setAuthor(bookMapper.trim(dto.author()));
         if (dto.availableCopies() != null) bookToUpdate.setAvailableCopies(dto.availableCopies());
+        if (dto.synopsis() != null) bookToUpdate.setSynopsis(bookMapper.trim(dto.synopsis()));
+        if (dto.editorial() != null) bookToUpdate.setEditorial(bookMapper.trim(dto.editorial()));
 
         // Guardamos los cambios
         Book bookUpdated = bookRepository.save(bookToUpdate);
