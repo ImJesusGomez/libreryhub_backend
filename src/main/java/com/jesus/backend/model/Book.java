@@ -16,16 +16,16 @@ public class Book extends Auditable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "isbn", unique = true, nullable = false)
+    @Column(name = "isbn", unique = true, nullable = false, length = 13)
     private String isbn;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "title", nullable = false, length = 100)
     private String title;
 
-    @Column(name = "author")
+    @Column(name = "author", length = 100)
     private String author;
 
-    @Column(name = "editorial")
+    @Column(name = "editorial", length = 50)
     private String editorial;
 
     @Column(name = "synopsis")
@@ -36,7 +36,7 @@ public class Book extends Auditable {
     private BookGenre genre;
 
     @Column(name = "availableCopies")
-    private Integer availableCopies;
+    private Integer availableCopies = 0;
 
     // TODO: implement image attribute
 
