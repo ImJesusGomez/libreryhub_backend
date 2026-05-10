@@ -16,10 +16,10 @@ public record BookUpdateRequestDTO(
         @Size(min = 1, max = 100, message = "Author must be between 1 and 100 characters.")
         String author,
 
-        @Size(min = 1, max = 50, message = "Title must be between 1 and 100 characters.")
+        @Size(min = 1, max = 50, message = "Editorial must be between 1 and 50 characters.")
         String editorial,
 
-        @Size(min = 10, max = 100, message = "Title must be between 10 and 100 characters.")
+        @Size(min = 10, max = 255, message = "Synopsis must be between 10 and 255 characters.")
         String synopsis,
 
         BookGenre genre,
