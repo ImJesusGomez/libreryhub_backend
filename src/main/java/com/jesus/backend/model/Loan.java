@@ -3,7 +3,6 @@ package com.jesus.backend.model;
 import com.jesus.backend.model.enums.LoanStatus;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

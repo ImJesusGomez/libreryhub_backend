@@ -10,7 +10,7 @@ import java.util.UUID;
 @Table(name = "loan_items")
 public class LoanItem extends Auditable {
 
-    // Atributes
+    // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -20,9 +20,6 @@ public class LoanItem extends Auditable {
 
     @Column(name = "real_return_date")
     private LocalDate realReturnDate;
-
-    @Column(name = "fine")
-    private BigDecimal fine = BigDecimal.ZERO;
 
     @Column(name = "damaged")
     private Boolean damaged = false;
@@ -43,11 +40,10 @@ public class LoanItem extends Auditable {
     public LoanItem() {
     }
 
-    public LoanItem(UUID id, LocalDate estimatedReturnDate, LocalDate realReturnDate, BigDecimal fine, Boolean damaged, Integer quantity, Loan loan, Book book) {
+    public LoanItem(UUID id, LocalDate estimatedReturnDate, LocalDate realReturnDate, Boolean damaged, Integer quantity, Loan loan, Book book) {
         this.id = id;
         this.estimatedReturnDate = estimatedReturnDate;
         this.realReturnDate = realReturnDate;
-        this.fine = fine;
         this.damaged = damaged;
         this.quantity = quantity;
         this.loan = loan;
@@ -77,14 +73,6 @@ public class LoanItem extends Auditable {
 
     public void setRealReturnDate(LocalDate realReturnDate) {
         this.realReturnDate = realReturnDate;
-    }
-
-    public BigDecimal getFine() {
-        return fine;
-    }
-
-    public void setFine(BigDecimal fine) {
-        this.fine = fine;
     }
 
     public Boolean getDamaged() {

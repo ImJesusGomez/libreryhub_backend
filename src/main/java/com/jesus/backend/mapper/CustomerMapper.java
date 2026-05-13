@@ -2,6 +2,7 @@ package com.jesus.backend.mapper;
 
 import com.jesus.backend.dto.request.CustomerCreateRequestDTO;
 import com.jesus.backend.dto.response.CustomerResponseDTO;
+import com.jesus.backend.dto.response.CustomerSummaryResponseDTO;
 import com.jesus.backend.model.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,6 +13,7 @@ public interface CustomerMapper {
 
     // Entity -> DTO
     CustomerResponseDTO toCustomerResponseDTO(Customer customer);
+    CustomerSummaryResponseDTO toCustomerSummaryResponseDTO(Customer customer);
 
     // DTO -> Entity
     @Mapping(target = "firstName", source = "firstName", qualifiedByName = "normName")

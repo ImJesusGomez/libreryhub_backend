@@ -2,6 +2,7 @@ package com.jesus.backend.mapper;
 
 import com.jesus.backend.dto.request.BookCreateRequestDTO;
 import com.jesus.backend.dto.response.BookResponseDTO;
+import com.jesus.backend.dto.response.BookSummaryResponseDTO;
 import com.jesus.backend.model.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,6 +13,7 @@ public interface BookMapper {
 
     // Entity -> DTO
     BookResponseDTO toBookResponseDTO(Book book);
+    BookSummaryResponseDTO toBookSummaryResponseDTO(Book book);
 
     // DTO -> Entity
     @Mapping(target = "isbn", source = "isbn", qualifiedByName = "trim")
