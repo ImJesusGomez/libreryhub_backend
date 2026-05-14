@@ -2,7 +2,6 @@ package com.jesus.backend.controller;
 
 import com.jesus.backend.dto.request.LoanCreateRequestDTO;
 import com.jesus.backend.dto.request.LoanItemUpdateRequestDTO;
-import com.jesus.backend.dto.request.LoanUpdateRequestDTO;
 import com.jesus.backend.dto.response.LoanItemResponseDTO;
 import com.jesus.backend.dto.response.LoanResponseDTO;
 import com.jesus.backend.model.enums.LoanStatus;
@@ -59,7 +58,7 @@ public class LoanController {
 
     @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @PutMapping("loan-items/{id}/return")
-    public ResponseEntity<LoanItemResponseDTO> returnLoanItemById(@PathVariable UUID id, LoanItemUpdateRequestDTO dto) {
+    public ResponseEntity<LoanItemResponseDTO> returnLoanItemById(@PathVariable UUID id, @Valid @RequestBody LoanItemUpdateRequestDTO dto) {
         return new ResponseEntity<>(loanService.returnLoanItem(id, dto), HttpStatus.OK);
     }
 

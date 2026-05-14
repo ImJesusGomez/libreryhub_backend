@@ -1,10 +1,12 @@
 package com.jesus.backend.dto.request;
 
 import com.jesus.backend.model.enums.LoanStatus;
+import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
+public record LoanUpdateRequestDTO(
 
-public record LoanUpdateRequestDTO (
+        @NotNull(message = "Loan status is required.")
         LoanStatus status
+
 ) {
 }
