@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Préstamo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fb;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #a27b56, #764c22);
+            padding: 32px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 40px 32px;
+            line-height: 1.7;
+        }
+
+        .content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: #a27b56;
+        }
+
+        .warning-box {
+            background-color: #a27b5628;
+            border-left: 5px solid #a27b56;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 24px 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #582e06;
+            font-size: 15px;
+        }
+
+        .footer {
+            background-color: #f8fafc;
+            padding: 24px;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            border-top: 1px solid #5d330c;
+        }
+
+        @media screen and (max-width: 600px) {
+            .content {
+                padding: 30px 22px;
+            }
+
+            .header {
+                padding: 24px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📚 Recordatorio de Préstamo</h1>
+    </div>
+
+    <div class="content">
+
+        <p>
+            Hola
+            <span class="highlight" th:text="${firstName} + ' ' + ${lastName}">
+        </span>,
+        </p>
+
+        <p>
+            Este es un mensaje automático para recordarte que tu préstamo
+            finaliza <strong th:text="${day}"></strong>.
+        </p>
+
+        <div class="warning-box">
+            <p>
+                Por favor, devuelve el libro a tiempo para evitar multas o
+                restricciones en futuros préstamos.
+            </p>
+        </div>
+
+        <p>
+            Gracias por utilizar nuestro sistema de biblioteca.
+        </p>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Sistema de Biblioteca · Mensaje automático
+    </div>
+
+</div>
+
+</body>
+
+</html>

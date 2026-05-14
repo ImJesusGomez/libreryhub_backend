@@ -16,6 +16,18 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+  mail:
+    host: smtp.gmail.com # Servidor SMTP de gmail
+    port: 587
+    username: jgcode.apps@gmail.com
+    password: tazjqlznuikpjufq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 jwt:
   secret: 9fE2L1pQ7rXs82vHkP1bWz6Yt8dA3rMfQ9uL7pHcV4sN0mQ2xA8dC5rT9hK1vB3X
   expiration: 86400000
