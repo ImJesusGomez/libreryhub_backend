@@ -38,7 +38,8 @@ public class Book extends Auditable {
     @Column(name = "availableCopies")
     private Integer availableCopies = 0;
 
-    // TODO: implement image attribute
+    @Column(name = "image_url")
+    private String imageUrl;
 
     // Relationships
     @OneToMany(mappedBy = "book")
@@ -48,7 +49,7 @@ public class Book extends Auditable {
     public Book() {
     }
 
-    public Book(UUID id, String isbn, String title, String author, String editorial, String synopsis, BookGenre genre, Integer availableCopies, List<LoanItem> loanItems) {
+    public Book(UUID id, String isbn, String title, String author, String editorial, String synopsis, BookGenre genre, Integer availableCopies, String imageUrl, List<LoanItem> loanItems) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -57,6 +58,7 @@ public class Book extends Auditable {
         this.synopsis = synopsis;
         this.genre = genre;
         this.availableCopies = availableCopies;
+        this.imageUrl = imageUrl;
         this.loanItems = loanItems;
     }
 
@@ -123,6 +125,14 @@ public class Book extends Auditable {
 
     public void setAvailableCopies(Integer availableCopies) {
         this.availableCopies = availableCopies;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<LoanItem> getLoanItems() {

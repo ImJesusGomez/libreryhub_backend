@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,12 @@ import java.util.UUID;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final FileStorageService fileStorageService;
     private final CustomerMapper customerMapper;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, FileStorageService fileStorageService, CustomerMapper customerMapper) {
         this.customerRepository = customerRepository;
+        this.fileStorageService = fileStorageService;
         this.customerMapper = customerMapper;
     }
 
@@ -114,5 +117,18 @@ public class CustomerServiceImpl implements CustomerService {
 
         // Retornamos la respuesta
         return customerMapper.toCustomerResponseDTO(customerUpdated);
+    }
+
+    @Transactional
+    @Override
+    public void uploadCustomerImage(UUID id, MultipartFile image) {
+        // Buscamos el cliente
+        Customer customer = customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Customer Not Found"));
+
+        // Guardar imagen
+        String imageName = fileStorageService.saveImage(image);
+
+        // Guardar nombre en BD
+        customer.setImageUrl(imageName);
     }
 }

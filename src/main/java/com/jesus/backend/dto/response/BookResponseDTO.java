@@ -12,6 +12,7 @@ public record BookResponseDTO (
         String editorial,
         String synopsis,
         BookGenre genre,
-        Integer availableCopies
+        Integer availableCopies,
+        String imageUrl
 ) {
 }

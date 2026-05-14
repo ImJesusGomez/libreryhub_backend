@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +27,12 @@ import java.util.UUID;
 @Service
 public class BookServiceImpl implements BookService {
 
+    private final FileStorageService fileStorageService;
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
 
-    public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper) {
+    public BookServiceImpl(FileStorageService fileStorageService, BookRepository bookRepository, BookMapper bookMapper) {
+        this.fileStorageService = fileStorageService;
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
     }
@@ -104,6 +107,19 @@ public class BookServiceImpl implements BookService {
 
         // Retornamos la respuesta
         return bookMapper.toBookResponseDTO(bookUpdated);
+    }
+
+    @Transactional
+    @Override
+    public void uploadBookImage(UUID id, MultipartFile image) {
+        // Buscamos el libro
+        Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book Not Found."));
+
+        // Guardar imagen
+        String imageName = fileStorageService.saveImage(image);
+
+        // Guardar nombre en BD
+        book.setImageUrl(imageName);
     }
 
 }

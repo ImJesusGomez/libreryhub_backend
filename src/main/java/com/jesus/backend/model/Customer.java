@@ -31,7 +31,8 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private CustomerStatus status;
 
-    // TODO: Implement Image
+    @Column(name = "image_url")
+    private String imageUrl;
 
     // Relationships
     @OneToMany(mappedBy = "customer")
@@ -41,13 +42,14 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(UUID id, String firstName, String lastName, String email, String phoneNumber, CustomerStatus status, List<Loan> loans) {
+    public Customer(UUID id, String firstName, String lastName, String email, String phoneNumber, CustomerStatus status, String imageUrl, List<Loan> loans) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.status = status;
+        this.imageUrl = imageUrl;
         this.loans = loans;
     }
 
@@ -99,6 +101,14 @@ public class Customer {
 
     public void setStatus(CustomerStatus status) {
         this.status = status;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<Loan> getLoans() {

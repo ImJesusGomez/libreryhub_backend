@@ -10,6 +10,7 @@ public record CustomerResponseDTO (
         String lastName,
         String email,
         String phoneNumber,
-        CustomerStatus status
+        CustomerStatus status,
+        String imageUrl
 ) {
 }
